@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Livewire\Frontend\PemesananJoki;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'main'])->name('main');
+Route::get('/pemesanan-joki', PemesananJoki::class)->name('pemesanan-joki');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/pesanan', [MainController::class, 'pesanan'])->name('pesanan');
 });

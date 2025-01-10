@@ -10,4 +10,14 @@ class MainController extends Controller
     {
         return view('frontend.main');
     }
+
+    public function dashboard()
+    {
+        return view('backend.dashboard');
+    }
+
+    public function pesanan()
+    {
+        return view('backend.pesanan');
+    }
 }
