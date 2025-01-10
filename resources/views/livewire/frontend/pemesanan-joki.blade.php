@@ -29,81 +29,146 @@
 
         <div class="flex gap-1 pb-14 lg:pb-20 px-9 lg:px-40">
             <div class="w-full px-5 pt-3 pb-5 border border-violet-600 rounded-md bg-neutral-800">
-                <div class="grid grid-cols-6 gap-x-3 gap-y-4">
-                    <div class="col-span-6">
-                        <h3 class="text-lg text-white">
-                            Informasi Data Diri
-                        </h3>
-                        <hr class="w-[80%] lg:w-[30%] border-t-4 border-violet-600 mt-2">
-                    </div>
-                    <div class="col-span-6 lg:col-span-2">
-                        <div class="w-full relative">
-                            <input type="text" id="nama_pelanggan" name="nama_pelanggan"
-                                class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                placeholder="Masukan Nama Kamu" required>
-                            <div
-                                class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                                Nama Kamu :
+                <form wire:submit="buatPesanan">
+                    <div class="grid grid-cols-6 gap-x-3 gap-y-4">
+                        <div class="col-span-6">
+                            <h3 class="text-lg text-white">
+                                Informasi Data Diri
+                            </h3>
+                            <hr class="w-[80%] lg:w-[30%] border-t-4 border-violet-600 mt-2">
+                        </div>
+                        <div class="col-span-6 lg:col-span-2">
+                            <div class="w-full relative">
+                                <input type="text" id="nama_pelanggan" name="nama_pelanggan"
+                                    wire:model="state.nama_pelanggan"
+                                    class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="Masukan Nama Kamu">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Nama Kamu :
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-2">
-                        <div class="w-full relative">
-                            <input type="text" id="nomor_wa" name="nomor_wa"
-                                class="peer py-2 px-0 ps-10 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                placeholder="Masukan Nomor Whatsapp" required>
-                            <div
-                                class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                                +62
+                        <div class="col-span-6 lg:col-span-2">
+                            <div class="w-full relative">
+                                <input type="text" id="nomor_wa" name="nomor_wa"
+                                    wire:model="state.nomor_wa_pelanggan"
+                                    class="peer py-2 px-0 ps-10 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="Masukan Nomor Whatsapp">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    +62
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-2">
-                        <div class="w-full relative">
-                            <input type="email" id="email" name="email"
-                                class="peer py-2 px-0 ps-14 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                placeholder="example@mail.com" required>
-                            <div
-                                class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                                Email :
+                        <div class="col-span-6 lg:col-span-2">
+                            <div class="w-full relative">
+                                <input type="email" id="email" name="email" wire:model="state.email_pelanggan"
+                                    class="peer py-2 px-0 ps-14 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="example@mail.com">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Email :
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-3">
-                        <div class="w-full relative">
-                            <input type="text" id="ign" name="ign"
-                                class="peer py-2 px-0 ps-11 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                placeholder="Masukan IGN (In Game Nickname)" required>
-                            <div
-                                class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                                IGN :
+                        <div class="col-span-6 lg:col-span-3">
+                            <div class="w-full relative">
+                                <input type="text" id="ign" name="ign" wire:model="state.ign"
+                                    class="peer py-2 px-0 ps-11 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="Masukan IGN (In Game Nickname)">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    IGN :
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-3">
-                        <div class="w-full relative">
-                            <input type="text" id="hero_request" name="hero_request"
-                                class="peer py-2 px-0 ps-[105px] block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                placeholder="Miya, Hanabi, Franco, ..." required>
-                            <div
-                                class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                                Hero Request :
+                        <div class="col-span-6 lg:col-span-3">
+                            <div class="w-full relative">
+                                <input type="text" id="hero_request" name="hero_request"
+                                    wire:model="state.hero_request"
+                                    class="peer py-2 px-0 ps-[105px] block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="Miya, Hanabi, Franco, ...">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Hero Request :
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-3">
-                        <div class="w-full relative">
-                            <select name="start_rank" id="start_rank"
-                                class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
-                                <option value="">Pilih Rank Awal</option>
-                            </select>
-                            <div
-                                class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                                Rank Awal :
+                        <div class="col-span-6 lg:col-span-3">
+                            <div class="w-full relative">
+                                <select name="start_rank" id="start_rank" wire:model="state.start_rank"
+                                    class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                    @foreach ($rank as $key => $item)
+                                        <option value="{{ $key }}" class="bg-white text-black">
+                                            {{ $key }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Rank Awal :
+                                </div>
                             </div>
                         </div>
+                        <div class="col-span-6 lg:col-span-3">
+                            <div class="w-full relative">
+                                <select name="target_rank" id="target_rank" wire:model="state.target_rank"
+                                    class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                    @foreach ($rank as $key => $item)
+                                        <option value="{{ $key }}" class="bg-white text-black">
+                                            {{ $key }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Target Rank :
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 lg:col-span-2">
+                            <div class="w-full relative">
+                                <input type="text" id="jumlah_stars" name="jumlah_stars"
+                                    wire:model="state.jumlah_stars"
+                                    class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="0 Stars">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Jumlah Stars
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 lg:col-span-4">
+                            <div class="w-full relative">
+                                <input type="text" id="harga" name="harga" wire:model="state.harga"
+                                    class="peer py-2 px-0 ps-36 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+                                    placeholder="0 Stars">
+                                <div
+                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    Estimasi Harga - Rp.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 flex justify-center items-center">
+                            <button type="submit"
+                                class="w-full py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-violet-500 text-white hover:bg-violet-600 focus:outline-none focus:bg-violet-600 disabled:opacity-50 disabled:pointer-events-none">
+                                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-calendar-check-2">
+                                    <path d="M8 2v4" />
+                                    <path d="M16 2v4" />
+                                    <path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8" />
+                                    <path d="M3 10h18" />
+                                    <path d="m16 20 2 2 4-4" />
+                                </svg>
+
+                                Buat Data Pesanan
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
