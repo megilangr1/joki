@@ -262,7 +262,7 @@ class PemesananJoki extends Component
 
             $pesanan = Pesanan::firstOrCreate([
                 'id_pelanggan' => $idPelanggan,
-                'kode_pesanan' => Str::upper(Str::random(5)) . $nomorPelanggan,
+                'kode_pesanan' => Str::upper(Str::random(3)) . $nomorPelanggan . '-' . Str::upper(Str::random(2)),
                 'tanggal_pesanan' => date('Y-m-d'),
                 'ign' => $this->state['ign'],
                 'hero_request' => $this->state['hero_request'],

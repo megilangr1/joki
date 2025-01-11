@@ -21,4 +21,29 @@ class Pesanan extends Model
         'harga',
         'status_pesanan',
     ];
+
+    protected $casts = [
+        'status_pesanan' => 'integer',
+    ];
+
+    public function pelanggan()
+    {
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
+    }
+
+
+    // Accessor untuk status
+    public function getStatusLabelAttribute()
+    {
+        return match ($this->status_pesanan) {
+            0 => 'Menunggu Konfirmasi',
+            1 => 'Dalam Proses Konfirmasi',
+            2 => 'Pesanan di-Tolak / di-Batalkan',
+            3 => 'Menunggu Pembayaran',
+            4 => 'Menunggu Verifikasi Pembayaran',
+            5 => 'Proses Pengerjaan',
+            6 => 'Selesai',
+            default => 'Status Tidak Dikenal',
+        };
+    }
 }
