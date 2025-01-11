@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Livewire\Frontend\PembayaranJoki;
 use App\Livewire\Frontend\PemesananJoki;
 use App\Livewire\Pesanan\MainIndex as PesananMainIndex;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'main'])->name('main');
 Route::get('/pemesanan-joki', PemesananJoki::class)->name('pemesanan-joki');
+Route::get('/pembayaran-joki/{kode}', PembayaranJoki::class)->name('pembayaran-joki');
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');

@@ -301,6 +301,34 @@
                                                                             </button>
                                                                         </div>
                                                                     @endif
+                                                                    @if ($item->status_pesanan == 3)
+                                                                        <div class="hs-tooltip inline-block">
+                                                                            <a href="{{ route('pembayaran-joki', ['kode' => $item->kode_pesanan]) }}"
+                                                                                target="_blank"
+                                                                                class="hs-tooltip-toggle px-1 py-1 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-sky-600 hover:border-sky-200 hover:text-sky-800 hover:scale-110 focus:outline-none focus:border-sky-800 focus:text-sky-800 disabled:opacity-50 disabled:pointer-events-none">
+                                                                                <svg class="shrink-0 size-4"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="lucide lucide-link">
+                                                                                    <path
+                                                                                        d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                                                                                    <path
+                                                                                        d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                                                                                </svg>
+
+                                                                                <span
+                                                                                    class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm"
+                                                                                    role="tooltip">
+                                                                                    Buka Link Pembayaran
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    @endif
                                                                     <div class="hs-tooltip inline-block">
                                                                         <button type="button"
                                                                             data-id="{{ $item->id }}"
