@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pelanggan');
+            $table->string('kode_pesanan')->unique();
             $table->date('tanggal_pesanan');
             $table->string('ign');
+            $table->string('hero_request')->default('Bebas');
             $table->string('start_rank');
             $table->string('target_rank');
             $table->smallInteger('jumlah_stars');

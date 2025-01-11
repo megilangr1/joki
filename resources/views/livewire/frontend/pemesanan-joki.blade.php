@@ -28,7 +28,8 @@
         </div>
 
         <div class="flex gap-1 pb-14 lg:pb-20 px-9 lg:px-40">
-            <div class="w-full px-5 pt-3 pb-5 border border-violet-600 rounded-md bg-neutral-800">
+            <div
+                class="w-full px-5 pt-3 pb-5 border border-violet-600 rounded-md bg-neutral-800 {{ $done ? 'hidden' : 'block' }}">
                 <form wire:submit="buatPesanan">
                     <div class="grid grid-cols-6 gap-x-3 gap-y-4">
                         <div class="col-span-6">
@@ -44,10 +45,11 @@
                                     class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                                     placeholder="Masukan Nama Kamu">
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.nama_pelanggan') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Nama Kamu :
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.nama_pelanggan') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-2">
                             <div class="w-full relative">
@@ -56,10 +58,11 @@
                                     class="peer py-2 px-0 ps-10 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                                     placeholder="Masukan Nomor Whatsapp">
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.nomor_wa_pelanggan') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     +62
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.nomor_wa_pelanggan') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-2">
                             <div class="w-full relative">
@@ -67,10 +70,11 @@
                                     class="peer py-2 px-0 ps-14 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                                     placeholder="example@mail.com">
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.email_pelanggan') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Email :
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.email_pelanggan') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-3">
                             <div class="w-full relative">
@@ -78,10 +82,11 @@
                                     class="peer py-2 px-0 ps-11 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                                     placeholder="Masukan IGN (In Game Nickname)">
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.ign') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     IGN :
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.ign') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-3">
                             <div class="w-full relative">
@@ -90,14 +95,15 @@
                                     class="peer py-2 px-0 ps-[105px] block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                                     placeholder="Miya, Hanabi, Franco, ...">
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.hero_request') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Hero Request :
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.hero_request') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-3">
                             <div class="w-full relative">
-                                <select name="start_rank" id="start_rank" wire:model="state.start_rank"
+                                <select name="start_rank" id="start_rank" wire:model.live="state.start_rank"
                                     class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
                                     @foreach ($rank as $key => $item)
                                         <option value="{{ $key }}" class="bg-white text-black">
@@ -106,14 +112,15 @@
                                     @endforeach
                                 </select>
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.start_rank') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Rank Awal :
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.start_rank') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-3">
                             <div class="w-full relative">
-                                <select name="target_rank" id="target_rank" wire:model="state.target_rank"
+                                <select name="target_rank" id="target_rank" wire:model.live="state.target_rank"
                                     class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
                                     @foreach ($rank as $key => $item)
                                         <option value="{{ $key }}" class="bg-white text-black">
@@ -122,33 +129,39 @@
                                     @endforeach
                                 </select>
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.target_rank') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Target Rank :
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.target_rank') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-2">
                             <div class="w-full relative">
                                 <input type="text" id="jumlah_stars" name="jumlah_stars"
-                                    wire:model="state.jumlah_stars"
+                                    wire:model="state.jumlah_stars_text"
                                     class="peer py-2 px-0 ps-24 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                    placeholder="0 Stars">
+                                    placeholder="0 Stars" readonly>
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.jumlah_stars') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Jumlah Stars
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.jumlah_stars') }}</p>
                         </div>
                         <div class="col-span-6 lg:col-span-4">
                             <div class="w-full relative">
-                                <input type="text" id="harga" name="harga" wire:model="state.harga"
+                                <input type="text" id="harga" name="harga" wire:model="state.harga_text"
                                     class="peer py-2 px-0 ps-36 block w-full text-white bg-gray-100 border-t-0 border-x-0 border-b-2 bg-transparent text-sm focus:border-violet-500 focus:ring-0 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                    placeholder="0 Stars">
+                                    placeholder="0" readonly>
                                 <div
-                                    class="text-neutral-200 text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                    class="{{ $errors->has('state.harga') ? 'text-red-500' : 'text-neutral-200' }} text-sm absolute inset-y-0 start-0 flex items-center pointer-events-none ps-0 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
                                     Estimasi Harga - Rp.
                                 </div>
                             </div>
+                            <p class="text-[10px] text-red-500">{{ $errors->first('state.harga') }}</p>
+                        </div>
+                        <div class="col-span-6">
+                            <p class="text-[10px] text-red-500">{{ $err }}</p>
                         </div>
                         <div class="col-span-6 flex justify-center items-center">
                             <button type="submit"
@@ -169,6 +182,16 @@
                         </div>
                     </div>
                 </form>
+            </div>
+
+
+            <div
+                class="w-full px-5 pt-3 pb-5 border border-violet-600 rounded-md bg-neutral-800 {{ $done ? 'block' : 'hidden' }}">
+                <h4 class="text-center text-lg text-white">
+                    Terima Kasih atas Pesanan nya..
+                    <br>
+                    Kami akan segera menghubungi anda untuk konfirmasi selanjutnya.
+                </h4>
             </div>
         </div>
     </div>

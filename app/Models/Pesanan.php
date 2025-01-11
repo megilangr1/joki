@@ -11,8 +11,10 @@ class Pesanan extends Model
 
     protected $fillable = [
         'id_pelanggan',
+        'kode_pesanan',
         'tanggal_pesanan',
         'ign',
+        'hero_request',
         'start_rank',
         'target_rank',
         'jumlah_stars',
