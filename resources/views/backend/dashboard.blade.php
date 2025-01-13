@@ -1,5 +1,5 @@
 @extends('backend.master')
 
 @section('content')
-    AWOAOKW
+    Selamat Datang di-Dashboard SIJOKI
 @endsection
