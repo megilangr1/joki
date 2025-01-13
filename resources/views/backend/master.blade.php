@@ -17,6 +17,8 @@
 
     <!-- Styles -->
     @livewireStyles
+
+    <link rel="stylesheet" href="{{ asset('assets/lightbox2/css/lightbox.min.css') }}">
 </head>
 
 <body class="font-sans antialiased">
@@ -42,8 +44,78 @@
     </div>
 
     @stack('modals')
-
     @livewireScripts
+
+    <script src="{{ asset('assets/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('assets/lightbox2/js/lightbox.min.js') }}"></script>
+
+    <script>
+        const deleteSwal = (event) => {
+            Swal.fire({
+                title: "Lakukan Penghapusan Data ?",
+                text: "Data terhapus tidak dapat di-pulihkan!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#dd3333",
+                cancelButtonColor: "#666666",
+                confirmButtonText: "Ya, Hapus Data!",
+                cancelButtonText: "Batalkan Aksi"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event && event()
+                }
+            });
+        }
+
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            Livewire.on('toast', (event) => {
+                Toast.fire({
+                    icon: event.type || "question",
+                    title: event.message || "Aksi Berhasil di-Lakukan !"
+                });
+            });
+        });
+    </script>
+
+    @if (session()->has('toast'))
+        <script>
+            $(document).ready(function() {
+                Toast.fire({
+                    icon: `{{ session('toastType') }}` || "question",
+                    title: `{{ session('toastMessage') }}` || "Terjadi Kesalahan !"
+                });
+            });
+        </script>
+    @endif
+
+    <script>
+        $(document).ready(function() {
+            $('#table-data').on('click', '.delete-btn', function(el) {
+                const data = $(this).attr('data-id');
+                deleteSwal(() => {
+                    Livewire.dispatch('doDelete', {
+                        id: data
+                    })
+                })
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -46,4 +46,9 @@ class Pesanan extends Model
             default => 'Status Tidak Dikenal',
         };
     }
+
+    public function bukti()
+    {
+        return $this->hasMany(PesananBukti::class, 'id_pesanan', 'id');
+    }
 }

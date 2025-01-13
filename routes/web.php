@@ -3,6 +3,7 @@
 use App\Http\Controllers\MainController;
 use App\Livewire\Frontend\PembayaranJoki;
 use App\Livewire\Frontend\PemesananJoki;
+use App\Livewire\Pesanan\MainDetail as PesananMainDetail;
 use App\Livewire\Pesanan\MainIndex as PesananMainIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/pesanan', PesananMainIndex::class)->name('pesanan');
+    Route::get('/pesanan/{kode}/detail', PesananMainDetail::class)->name('pesanan.detail');
 });

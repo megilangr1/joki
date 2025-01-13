@@ -107,6 +107,7 @@ class MainIndex extends Component
             $this->dispatch('toast', type: "error", message: "Terjadi Kesalahan ! <br> Silahkan Hubungi Administrator !");
         }
     }
+
     public function doDelete(String $id)
     {
         DB::beginTransaction();
@@ -118,6 +119,21 @@ class MainIndex extends Component
             $this->dispatch('toast', type: "warning", message: "Data Berhasil di-Hapus !");
         } catch (\Throwable $th) {
             DB::rollBack();
+            $this->dispatch('toast', type: "error", message: "Terjadi Kesalahan ! <br> Silahkan Hubungi Administrator !");
+        }
+    }
+
+    public function selesai(String $id)
+    {
+        DB::beginTransaction();
+        try {
+            $check = Pesanan::where('id', '=', $id)->where('status_pesanan', '=', 5)->firstOrFail();
+            $update = $check->update(['status_pesanan' => 6]);
+
+            DB::commit();
+            $this->dispatch('toast', type: "success", message: "Pesanan di-Selesaikan !");
+        } catch (\Throwable $th) {
+            DB::rollback();
             $this->dispatch('toast', type: "error", message: "Terjadi Kesalahan ! <br> Silahkan Hubungi Administrator !");
         }
     }

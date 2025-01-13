@@ -329,6 +329,62 @@
                                                                             </a>
                                                                         </div>
                                                                     @endif
+                                                                    @if ($item->status_pesanan == 4)
+                                                                        <div class="hs-tooltip inline-block">
+                                                                            <a href="{{ route('pesanan.detail', ['kode' => $item->kode_pesanan]) }}"
+                                                                                class="hs-tooltip-toggle px-1 py-1 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-sky-600 hover:border-sky-200 hover:text-sky-800 hover:scale-110 focus:outline-none focus:border-sky-800 focus:text-sky-800 disabled:opacity-50 disabled:pointer-events-none">
+                                                                                <svg class="shrink-0 size-4"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="lucide lucide-file-image">
+                                                                                    <path
+                                                                                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                                                                                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                                                                                    <circle cx="10"
+                                                                                        cy="12" r="2" />
+                                                                                    <path
+                                                                                        d="m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22" />
+                                                                                </svg>
+
+                                                                                <span
+                                                                                    class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm"
+                                                                                    role="tooltip">
+                                                                                    Lihat File Pembayaran
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    @endif
+                                                                    @if ($item->status_pesanan == 5)
+                                                                        <div class="hs-tooltip inline-block">
+                                                                            <button type="button"
+                                                                                class="hs-tooltip-toggle px-1 py-1 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-blue-600 hover:border-blue-200 hover:text-blue-800 hover:scale-110 focus:outline-none focus:border-blue-800 focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
+                                                                                wire:click="selesai('{{ $item->id }}')">
+                                                                                <svg class="shrink-0 size-4"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="lucide lucide-circle-check-big">
+                                                                                    <path
+                                                                                        d="M21.801 10A10 10 0 1 1 17 3.335" />
+                                                                                    <path d="m9 11 3 3L22 4" />
+                                                                                </svg>
+                                                                                <span
+                                                                                    class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm"
+                                                                                    role="tooltip">
+                                                                                    Selesaikan Pesanan
+                                                                                </span>
+                                                                            </button>
+                                                                        </div>
+                                                                    @endif
                                                                     <div class="hs-tooltip inline-block">
                                                                         <button type="button"
                                                                             data-id="{{ $item->id }}"

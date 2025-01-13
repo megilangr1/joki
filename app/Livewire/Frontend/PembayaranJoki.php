@@ -68,7 +68,6 @@ class PembayaranJoki extends Component
             ];
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             abort(404);
         }
     }
